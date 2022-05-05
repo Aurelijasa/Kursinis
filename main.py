@@ -4,8 +4,8 @@ from tkinter import *
 langas = Tk()
 
 langas.title("Drabužių dydžių konvertavimas")
-langas.geometry("400x300")
-langas.config(bg='#F2B90C')
+langas.geometry("230x380")
+langas.config(bg='#EEA2AD')
 
 sarasas1 = ["JAV", "JK", "Vokietija", "Prancūzija", "Italija", "Korėja"]
 jav = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]
@@ -15,8 +15,8 @@ prancuzija = [32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56]
 italija = [36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60]
 koreja = [44, 44, 55, 55, 66, 66, 77, 77, 88, 88, "Nėra dydžio", "Nėra dydžio", "Nėra dydžio"]
 
-uzrasas1 = Label(langas, text="Drabužių dydžių konvertavimas")
-uzrasas2 = Label(langas, text="Pasirinkite drabužių dydžio šalį")
+#uzrasas1 = Label(langas, text="Drabužių dydžių konvertavimas")
+uzrasas2 = Label(langas, text="Pasirinkite drabužio šalį", bg='#EEA2AD', padx=43, pady=10, font=("Ariel", 10, "normal"))
 
 def pasirinkti_meniu(e):
     if meniu1.get() == "JAV":
@@ -38,18 +38,18 @@ def pasirinkti_meniu(e):
         meniu2.config(value=koreja)
         meniu2.set("Pasirinkti")
 
-meniu1 = tkinter.ttk.Combobox(langas, value=sarasas1)
+meniu1 = tkinter.ttk.Combobox(langas, value=sarasas1, font=("Ariel", 10, "normal"))
 meniu1.set("Pasirinkti")
 meniu1.bind("<<ComboboxSelected>>", pasirinkti_meniu)
 
-uzrasas3 = Label(langas, text="Pasirinkite drabužio dydį")
+uzrasas3 = Label(langas, text="Pasirinkite drabužio dydį", bg='#EEA2AD', pady=10, font=("Ariel", 10, "normal"))
 
-meniu2 = tkinter.ttk.Combobox(langas, value=[" "])
+meniu2 = tkinter.ttk.Combobox(langas, value=[" "], font=("Ariel", 10, "normal"))
 
-uzrasas4 = Label(langas, text="Pasirinkite kitą šalį")
+uzrasas4 = Label(langas, text="Pasirinkite kitą šalį", bg='#EEA2AD', pady=10, font=("Ariel", 10, "normal"))
 
 kintamasis = StringVar()
-rezultatas = Label(langas, text=" ")
+rezultatas = Label(langas, text=" ", bg='#EEA2AD', font=("Ariel", 12, "bold"), pady=40)
 
 def nustatyti():
     if meniu1.get() == "JAV":
@@ -103,20 +103,23 @@ def pakeisti(e):
         rezultatas["text"] = (f"Jūsų dydis: {dydis}")
         kintamasis.set(rezultatas["text"])
 
-meniu3 = tkinter.ttk.Combobox(langas, value=sarasas1)
+meniu3 = tkinter.ttk.Combobox(langas, value=sarasas1, font=("Ariel", 10, "normal"))
 meniu3.set("Pasirinkti")
 meniu3.bind("<<ComboboxSelected>>", pakeisti)
 
 def isvalyti():
     rezultatas["text"] = ""
+    meniu1.set("Pasirinkti")
+    meniu2.set("Pasirinkti")
+    meniu3.set("Pasirinkti")
 
 def iseiti():
     langas.destroy()
 
-mygtukas1 = Button(langas, text="Išvalyti", command=isvalyti)
-mygtukas2 = Button(langas, text="Užverti", command=iseiti)
+mygtukas1 = Button(langas, text="Išvalyti", command=isvalyti, borderwidth=5, width=20, font=("Ariel", 10, "normal"))
+mygtukas2 = Button(langas, text="Užverti", command=iseiti, borderwidth=5, width=20, font=("Ariel", 10, "normal"))
 
-uzrasas1.grid(row=0, column=1, sticky=E)
+#uzrasas1.grid(row=0, column=1, sticky=E)
 uzrasas2.grid(row=1, column=0)
 meniu1.grid(row=2, column=0)
 uzrasas3.grid(row=3, column=0)
@@ -127,6 +130,5 @@ rezultatas.grid(row=7, column=0)
 mygtukas1.grid(row=8, column=0)
 mygtukas2.grid(row=9, column=0)
 
-langas.mainloop()
 
-#kaip isvalyti boxus?
+langas.mainloop()
